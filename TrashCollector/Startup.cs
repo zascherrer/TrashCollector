@@ -31,19 +31,6 @@ namespace TrashCollector
                 var role = new IdentityRole();
                 role.Name = "Admin";
                 roleManager.Create(role);
-
-                //Here we create a Admin super user who will maintain the website                        
-                var user = new ApplicationUser();
-                user.Email = "zachary.a.scherrer@gmail.com";
-
-                string userPWD = "password";
-                var chkUser = UserManager.Create(user, userPWD);
-
-                //Add default User to Role Admin
-                if (chkUser.Succeeded)
-                {
-                    var result1 = UserManager.AddToRole(user.Id, "Admin");
-                }
             }
 
             // creating Creating Manager role
