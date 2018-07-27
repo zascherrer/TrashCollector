@@ -30,13 +30,13 @@ namespace TrashCollector.Controllers
                 //{
                 //    ViewBag.displayMenu = "Yes";
                 //}
-                //if (isEmployeeUser())
-                //{
-                //    RedirectToAction("Index", "Employees");
-                //}
+                if (isEmployeeUser())
+                {
+                    return RedirectToAction("EmployeeIndex");
+                }
                 if (isCustomerUser())
                 {
-                    RedirectToAction("CustomerDetails");
+                    return RedirectToAction("CustomerDetails");
                 }
                 return View();
             }
@@ -178,6 +178,44 @@ namespace TrashCollector.Controllers
 
                 return RedirectToAction("Index");
             }
+            return View();
+        }
+
+        public ActionResult EmployeeIndex()
+        {
+            //string today = DateTime.Today.DayOfWeek.ToString();
+            string today = "Monday";
+
+            ApplicationDbContext db = new ApplicationDbContext();
+            var employeeId = User.Identity.GetUserId();
+            var employee = db.Users.Find(employeeId);
+            var customers = db.Users.Where(u => u.ZipCode == employee.ZipCode && u.PickupDay.ToLower() == today.ToLower()).ToList();
+
+            return View(customers);
+        }
+
+        public ActionResult ConfirmPickup(string id)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            var customer = db.Users.Find(id);
+
+            return View(customer);
+        }
+
+        public ActionResult ApplyChargeToCustomer(string id)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            var customer = db.Users.Find(id);
+
+            customer.AmountOwed += 20;
+
+            db.SaveChanges();
+
+            return View("PickupConfirmed");
+        }
+
+        public ActionResult PickupConfirmed()
+        {
             return View();
         }
     }
