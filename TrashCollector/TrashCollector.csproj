@@ -216,6 +216,22 @@
     <Compile Include="Migrations\201807261915293_UserRoleMigration.Designer.cs">
       <DependentUpon>201807261915293_UserRoleMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807271255526_RegisterViewModelMigration.cs" />
+    <Compile Include="Migrations\201807271255526_RegisterViewModelMigration.Designer.cs">
+      <DependentUpon>201807271255526_RegisterViewModelMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807271332178_PickupDayMigration.cs" />
+    <Compile Include="Migrations\201807271332178_PickupDayMigration.Designer.cs">
+      <DependentUpon>201807271332178_PickupDayMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807271533484_AmountOwedMigration.cs" />
+    <Compile Include="Migrations\201807271533484_AmountOwedMigration.Designer.cs">
+      <DependentUpon>201807271533484_AmountOwedMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807271625022_SpecialPickupDateMigration.cs" />
+    <Compile Include="Migrations\201807271625022_SpecialPickupDateMigration.Designer.cs">
+      <DependentUpon>201807271625022_SpecialPickupDateMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -295,6 +311,9 @@
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Customers\PickupDay.cshtml" />
+    <Content Include="Views\Users\PickupDay.cshtml" />
+    <Content Include="Views\Users\CustomerDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -321,6 +340,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807261915293_UserRoleMigration.resx">
       <DependentUpon>201807261915293_UserRoleMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807271255526_RegisterViewModelMigration.resx">
+      <DependentUpon>201807271255526_RegisterViewModelMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807271332178_PickupDayMigration.resx">
+      <DependentUpon>201807271332178_PickupDayMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807271533484_AmountOwedMigration.resx">
+      <DependentUpon>201807271533484_AmountOwedMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807271625022_SpecialPickupDateMigration.resx">
+      <DependentUpon>201807271625022_SpecialPickupDateMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

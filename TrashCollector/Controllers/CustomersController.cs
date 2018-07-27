@@ -115,6 +115,11 @@ namespace TrashCollector.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult PickupDay()
+        {
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

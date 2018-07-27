@@ -98,11 +98,20 @@ namespace TrashCollector.Models
 
         [Required]
         [Display(Name = "Zip Code")]
-        public string ZipCode { get; set; }
+        public int ZipCode { get; set; }
 
         [Required]
         [Display(Name = "Role")]
         public string UserRole { get; set; }
+
+        [Display(Name = "Pickup Day")]
+        public string PickupDay { get; set; }
+
+        [Display(Name = "Amount Owed")]
+        public double AmountOwed { get; set; }
+
+        [Display(Name = "Special Pickup Date (dd/mm)")]
+        public string SpecialPickupDate { get; set; }
     }
 
     public class ResetPasswordViewModel

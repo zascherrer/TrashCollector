@@ -10,6 +10,13 @@ namespace TrashCollector.Models
     public class ApplicationUser : IdentityUser
     {
         public string UserRole { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public int ZipCode { get; set; }
+        public string PickupDay { get; set; }
+        public double AmountOwed { get; set; }
+        public string SpecialPickupDate { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -34,5 +41,6 @@ namespace TrashCollector.Models
 
         public DbSet<Customer> Customer { get; set; }
         public DbSet<Employee> Employee { get; set; }
+        
     }
 }
