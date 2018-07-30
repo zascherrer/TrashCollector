@@ -318,6 +318,7 @@
     <Content Include="Views\Users\ConfirmPickup.cshtml" />
     <Content Include="Views\Users\ApplyChargeToCustomer.cshtml" />
     <Content Include="Views\Users\PickupConfirmed.cshtml" />
+    <Content Include="Views\Users\FilterCustomersByDay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

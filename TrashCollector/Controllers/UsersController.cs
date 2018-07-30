@@ -32,7 +32,7 @@ namespace TrashCollector.Controllers
                 //}
                 if (isEmployeeUser())
                 {
-                    return RedirectToAction("EmployeeIndex");
+                    return RedirectToAction("FilterCustomersByDay");
                 }
                 if (isCustomerUser())
                 {
@@ -217,6 +217,32 @@ namespace TrashCollector.Controllers
         public ActionResult PickupConfirmed()
         {
             return View();
+        }
+
+        public ActionResult FilterCustomersByDay(string id)
+        {
+            string today = DateTime.Today.DayOfWeek.ToString();
+            //string today = id;
+
+            ApplicationDbContext db = new ApplicationDbContext();
+            var employeeId = User.Identity.GetUserId();
+            var employee = db.Users.Find(employeeId);
+            var customers = db.Users.Where(u => u.ZipCode == employee.ZipCode && u.PickupDay.ToLower() == today.ToLower()).ToList();
+
+            return View(customers);
+        }
+
+        [HttpPost]
+        public ActionResult FilterCustomersByDay(string id, List<ApplicationUser> customers)
+        {
+            string today = id;
+
+            ApplicationDbContext db = new ApplicationDbContext();
+            var employeeId = User.Identity.GetUserId();
+            var employee = db.Users.Find(employeeId);
+            customers = db.Users.Where(u => u.ZipCode == employee.ZipCode && u.PickupDay.ToLower() == today.ToLower()).ToList();
+
+            return View(customers);
         }
     }
 }
