@@ -209,14 +209,24 @@ namespace TrashCollector.Controllers
             ApplicationDbContext db = new ApplicationDbContext();
             var customer = db.Users.Find(id);
 
-            customer.AmountOwed += 20;
-
-            db.SaveChanges();
-
-            return View("PickupConfirmed");
+            if (DateTime.Today.DayOfWeek.ToString() == customer.PickupDay)
+            {
+                customer.AmountOwed += 20;
+                db.SaveChanges();
+                return View("PickupConfirmed");
+            }
+            else
+            {
+                return View("PickupCancelled");
+            }
         }
 
         public ActionResult PickupConfirmed()
+        {
+            return View();
+        }
+
+        public ActionResult PickupCancelled()
         {
             return View();
         }
@@ -246,5 +256,6 @@ namespace TrashCollector.Controllers
 
             return View(customers);
         }
+        
     }
 }

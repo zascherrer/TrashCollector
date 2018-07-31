@@ -112,6 +112,12 @@ namespace TrashCollector.Models
 
         [Display(Name = "Special Pickup Date (dd/mm)")]
         public string SpecialPickupDate { get; set; }
+
+        [Display(Name = "Suspend Pickups Until (dd/mm)")]
+        public string SuspendPickupsUntil { get; set; }
+
+        [Display(Name = "Suspend Pickups From (dd/mm)")]
+        public string SuspendPickupsFrom { get; set; }
     }
 
     public class ResetPasswordViewModel

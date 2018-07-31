@@ -17,6 +17,8 @@ namespace TrashCollector.Models
         public string PickupDay { get; set; }
         public double AmountOwed { get; set; }
         public string SpecialPickupDate { get; set; }
+        public string SuspendPickupsUntil { get; set; }
+        public string SuspendPickupsFrom { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -41,6 +43,6 @@ namespace TrashCollector.Models
 
         public DbSet<Customer> Customer { get; set; }
         public DbSet<Employee> Employee { get; set; }
-        
+
     }
 }
