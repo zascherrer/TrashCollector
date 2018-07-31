@@ -4,6 +4,71 @@
     ViewBag.Title = "Confirm Pickup";
 }
 
+<head runat="server">
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <title>Google Maps Multiple Markers</title>
+        <script src="http://maps.google.com/maps/api/js?key=@ViewBag.APIKey&sensor=false";
+                type="text/javascript"></script>
+    </head>
+    <body>
+        <div id="map" style="width: 500px; height: 400px;"></div>
+
+        <script type="text/javascript">
+            let marker, i;
+
+            GetLocation();
+
+            var locations = [
+                //['Bondi Beach', -33.890542, 151.274856, 4],
+                //['Coogee Beach', -33.923036, 151.259052, 5],
+                //['Cronulla Beach', -34.028249, 151.157507, 3],
+                //['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
+                ['Maroubra Beach', -33.80010128657071, 151.28747820854187, 1]
+            ];
+
+            var infowindow = new google.maps.InfoWindow();
+
+
+            //for (i = 0; i < locations.length; i++) {
+            //    marker = new google.maps.Marker({
+            //        position: latLng,
+            //        map: map
+            //    });
+
+            //    google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            //        return function () {
+            //            infowindow.setContent(locations[i][0]);
+            //            infowindow.open(map, marker);
+            //        }
+            //    })(marker, i));
+            //}
+
+            function GetLocation() {
+                let geocoder = new google.maps.Geocoder();
+                let address = @Html.Raw(Json.Encode(Model.Address));
+                let latitude;
+                let longitude;
+                geocoder.geocode({ 'address': address }, function (results, status) {
+                    if (status == "OK") {
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                            zoom: 5,
+                            center: results[0].geometry.location,
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        });
+                        var marker = new google.maps.Marker({ map: map, position: results[0].geometry.location });
+                    } else {
+                        alert("Request failed: " + status);
+                    }
+                });
+            };
+        </script>
+    </body>
+</html>
+</head>
+
 <h2>Customer Details</h2>
 
 <div>

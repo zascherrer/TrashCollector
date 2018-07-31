@@ -199,6 +199,8 @@ namespace TrashCollector.Controllers
             ApplicationDbContext db = new ApplicationDbContext();
             var customer = db.Users.Find(id);
 
+            ViewBag.APIKey = Keys.GOOGLEAPIKEY;
+
             return View(customer);
         }
 
