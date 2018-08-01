@@ -50,10 +50,8 @@ namespace TrashCollector.Models
     {
         [Required]
         [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
-
-        [Required]
+        public string UserName { get; set; }
+        
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -118,6 +116,7 @@ namespace TrashCollector.Models
 
         [Display(Name = "Suspend Pickups From (dd/mm)")]
         public string SuspendPickupsFrom { get; set; }
+        
     }
 
     public class ResetPasswordViewModel

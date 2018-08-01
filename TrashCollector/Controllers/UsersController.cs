@@ -241,6 +241,8 @@ namespace TrashCollector.Controllers
             var employee = db.Users.Find(employeeId);
             var customers = db.Users.Where(u => u.ZipCode == employee.ZipCode && u.PickupDay.ToLower() == today.ToLower()).ToList();
 
+            ViewBag.APIKey = Keys.GOOGLEAPIKEY;
+
             return View(customers);
         }
 
@@ -253,6 +255,8 @@ namespace TrashCollector.Controllers
             var employeeId = User.Identity.GetUserId();
             var employee = db.Users.Find(employeeId);
             customers = db.Users.Where(u => u.ZipCode == employee.ZipCode && u.PickupDay.ToLower() == today.ToLower()).ToList();
+
+            ViewBag.APIKey = Keys.GOOGLEAPIKEY;
 
             return View(customers);
         }

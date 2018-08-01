@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -13,11 +14,17 @@ namespace TrashCollector.Models
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }
+        [Display(Name = "Zip Code")]
         public int ZipCode { get; set; }
+        [Display(Name = "Pickup Day")]
         public string PickupDay { get; set; }
+        [Display(Name = "Amount Owed")]
         public double AmountOwed { get; set; }
+        [Display(Name = "Extra Pickup On:")]
         public string SpecialPickupDate { get; set; }
+        [Display(Name = "Suspend Pickups Until")]
         public string SuspendPickupsUntil { get; set; }
+        [Display(Name = "Suspend Pickups From")]
         public string SuspendPickupsFrom { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
